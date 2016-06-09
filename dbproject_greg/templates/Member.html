@@ -1,0 +1,35 @@
+{% extends "head.html" %}
+  
+  {% block content %}
+    <div class="container">
+      <div class="jumbotron">
+        <h2>Member :</h2>
+        <a href="#">Add Member</a>
+        <hr />
+        <table class='table table-striped'>
+          <tr>
+	          <th>Name</th>
+	          <th>Country</th>
+	          <th>City</th>
+	          <th>Zip Code</th>
+	          <th>Road</th>
+	          <th>Phone</th>
+	          <th>E-Mail</th>
+	      </tr>
+	      {% for m in memberList %}
+	      <tr>
+	      	<td>{{ m.name }}</td>
+	      	<td>{{ m.country }}</td>
+	      	<td>{{ m.city }}</td>
+	      	<td>{{ m.Z_code }}</td>
+	      	<td>{{ m.road }}</td>
+	      	<td>{{ m.phone }}</td>
+	      	<td>{{ m.e_mail }}</td>
+	      </tr>
+	      {% endfor %}
+        </table>
+        <hr />
+        
+      </div>
+    </div> 
+  {% endblock content %}

@@ -1,0 +1,38 @@
+{% extends "head.html" %}
+  
+  {% block content %}
+    <div class="container">
+      <div class="jumbotron">
+       <h2>Add Order : </h2>
+        <form class="form-inline" action="{{ url_for('addOrder') }}" method="POST">
+          Member
+          <select name="M_ID">
+              {% for m in memberList %}
+              <option value="{{ m.id }}">{{ m.name }}</option>
+              {% endfor %}
+          </select>
+          <br />
+          Product
+          <select name="P_ID">
+              {% for p in productList %}
+              <option value="{{ p.id }}">{{ p.name }}</option>
+              {% endfor %}
+          </select>
+          <br />
+          Request Date :
+          <input class="form-control" type="date" name="R_Date" />
+          <br />
+          Delivery Date :
+          <input class="form-control" type="date" name="D_Date" />
+          <br />
+          Total Amount :
+          <input class="form-control" type="text" name="total" />
+          <br />
+          Invoice No. :
+          <input class="form-control" type="text" name="I_No" />
+          <br />
+          <input class="btn btn-default" type="submit"/>
+        </form>
+      </div>
+    </div> 
+  {% endblock content %}

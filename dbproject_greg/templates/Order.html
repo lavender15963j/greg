@@ -1,0 +1,33 @@
+{% extends "head.html" %}
+  
+  {% block content %}
+    <div class="container">
+      <div class="jumbotron">
+        <h2>Order :</h2>
+        <a href="{{ url_for('addOrder') }}">Add Order</a>
+        <hr />
+        <table class='table table-striped'>
+          <tr>
+	          <th>Member Name</th>
+	          <th>Product Name</th>
+	          <th>Request Date</th>
+	          <th>Delivery Date</th>
+	          <th>Total Amount</th>
+	          <th>Invoice No.</th>
+	      </tr>
+	      {% for od in orderList %}
+	      <tr>
+	      	<td>{{ od.member.name }}</td>
+	      	<td>{{ od.product.name }}</td>
+	      	<td>{{ od.R_Date }}</td>
+	      	<td>{{ od.D_Date }}</td>
+	      	<td>{{ od.total }}</td>
+	      	<td>{{ od.I_No }}</td>
+	      </tr>
+	      {% endfor %}
+        </table>
+        <hr />
+        
+      </div>
+    </div> 
+  {% endblock content %}

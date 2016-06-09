@@ -1,0 +1,33 @@
+{% extends "head.html" %}
+  
+  {% block content %}
+    <div class="container">
+      <div class="jumbotron">
+        <h2>Supplier :</h2>
+        <a href="#">Add Supplier</a>
+        <hr />
+        <table class='table table-striped'>
+          <tr>
+	          <th>Name</th>
+	          <th>Country</th>
+	          <th>City</th>
+	          <th>Zip Code</th>
+	          <th>Road</th>
+	          <th>Phone</th>
+	      </tr>
+	      {% for s in supplierList %}
+	      <tr>
+	      	<td>{{ s.name }}</td>
+	      	<td>{{ s.country }}</td>
+	      	<td>{{ s.city }}</td>
+	      	<td>{{ s.Z_code }}</td>
+	      	<td>{{ s.road }}</td>
+	      	<td>{{ s.phone }}</td>
+	      </tr>
+	      {% endfor %}
+        </table>
+        <hr />
+        
+      </div>
+    </div> 
+  {% endblock content %}
