@@ -76,7 +76,7 @@ class Handler(object):
         supplierCursor = conn.cursor()
         
         supplierData = supplierCursor.execute(
-            "select * from 'member'"
+            "select * from 'supplier'"
         ).fetchall()
         
         print supplierData
@@ -100,4 +100,40 @@ class Handler(object):
         
         conn.commit()
         orderCursor.close()
+        conn.close()
+        
+    def insertMember(self, name, country, city, zip_code, road, phone, e_mail):
+        conn = sqlite3.connect(self.dbName)
+        memberCursor = conn.cursor()
+        
+        memberCursor.execute(
+            "insert into 'member' values(Null, '%s', '%s', '%s', '%s', '%s', '%s', '%s')" % (name, country, city, zip_code, road, phone, e_mail)
+        )
+        
+        conn.commit()
+        memberCursor.close()
+        conn.close()
+        
+    def insertProduct(self, S_ID, name, type, cost, price):
+        conn = sqlite3.connect(self.dbName)
+        productCursor = conn.cursor()
+        
+        productCursor.execute(
+            "insert into 'product' values(Null, '%s', '%s', %d, %d, %d)" % (name, type, cost, price,  S_ID)
+        )
+        
+        conn.commit()
+        productCursor.close()
+        conn.close()
+        
+    def insertSupplier(self, name, country, city, zip_code, road, phone):
+        conn = sqlite3.connect(self.dbName)
+        supplierCursor = conn.cursor()
+        
+        supplierCursor.execute(
+            "insert into 'supplier' values(Null, '%s', '%s', '%s', '%s', '%s', '%s')" % (name, country, city, zip_code, road, phone)
+        )
+        
+        conn.commit()
+        supplierCursor.close()
         conn.close()

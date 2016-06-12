@@ -134,6 +134,28 @@ def member():
             "memberList": memberList,
              }
     return render_template("Member.html", **data)
+#####---------------------------------add--------------------------------------
+@app.route('/Member/AddMember', methods=["GET", "POST"])
+def addMember():
+    account = accountHandler.getAccountDataBySessionId(
+                request.cookies.get('sessionId'))
+    if request.method == "GET":
+        data = {"title": "AddMember",
+                "Order": active,
+                "hasLogIn": True,
+                "userName": "Hello " + account.userName,
+                }
+        return render_template("AddMember.html", **data)
+    elif request.method == "POST":
+        name = request.form['name']
+        country = request.form['country']
+        city = request.form['city']
+        zip_code = request.form['zip_code']
+        road = request.form['road']
+        phone = request.form['phone']
+        e_mail = request.form['e_mail']
+        handler.insertMember(name, country, city, zip_code, road, phone, e_mail)
+        return redirect(url_for('member'))
     
 #----------------------------------Product---------------------------------------
 @app.route('/Product')
@@ -150,6 +172,29 @@ def product():
              }
     return render_template("Product.html", **data)
     
+#####---------------------------------add--------------------------------------
+@app.route('/Product/AddProduct', methods=["GET", "POST"])
+def addProduct():
+    account = accountHandler.getAccountDataBySessionId(
+                request.cookies.get('sessionId'))
+    supplierList = handler.selectAllSupplier()
+    if request.method == "GET":
+        data = {"title": "AddProduct",
+                "Order": active,
+                "hasLogIn": True,
+                "userName": "Hello " + account.userName,
+                "supplierList": supplierList,
+                }
+        return render_template("AddProduct.html", **data)
+    elif request.method == "POST":
+        S_ID = int(request.form['S_ID'])
+        name = request.form['name']
+        type = request.form['type']
+        cost = int(request.form['cost'])
+        price = int(request.form['price'])
+        handler.insertProduct(S_ID, name, type, cost, price)
+        return redirect(url_for('product'))
+    
 #----------------------------------Supplier---------------------------------------
 @app.route('/Supplier')
 def supplier():
@@ -164,6 +209,27 @@ def supplier():
             "supplierList":  supplierList,
              }
     return render_template("Supplier.html", **data)
+#####---------------------------------add--------------------------------------
+@app.route('/Supplier/AddSupplier', methods=["GET", "POST"])
+def addSupplier():
+    account = accountHandler.getAccountDataBySessionId(
+                request.cookies.get('sessionId'))
+    if request.method == "GET":
+        data = {"title": "AddSupplier",
+                "Order": active,
+                "hasLogIn": True,
+                "userName": "Hello " + account.userName,
+                }
+        return render_template("AddSupplier.html", **data)
+    elif request.method == "POST":
+        name = request.form['name']
+        country = request.form['country']
+        city = request.form['city']
+        zip_code = request.form['zip_code']
+        road = request.form['road']
+        phone = request.form['phone']
+        handler.insertSupplier(name, country, city, zip_code, road, phone)
+        return redirect(url_for('supplier'))
 
     
 #-------------------------------------MAIN-------------------------------------

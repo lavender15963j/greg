@@ -1,0 +1,33 @@
+{% extends "head.html" %}
+  
+  {% block content %}
+    <div class="container">
+      <div class="jumbotron">
+       <h2>Add Member : </h2>
+        <form class="form-inline" action="{{ url_for('addMember') }}" method="POST">
+          Name :
+          <input class="form-control" type="text" name="name" />
+          <br />
+          Country :
+          <input class="form-control" type="text" name="country" />
+          <br />
+          City :
+          <input class="form-control" type="text" name="city" />
+          <br />
+          Zip Code :
+          <input class="form-control" type="text" name="zip_code" />
+          <br />
+          Road :
+          <input class="form-control" type="text" name="road" />
+          <br />
+          Phone :
+          <input class="form-control" type="text" name="phone" />
+          <br />
+          E-Mail :
+          <input class="form-control" type="text" name="e_mail" />
+          <br />
+          <input class="btn btn-default" type="submit"/>
+        </form>
+      </div>
+    </div> 
+  {% endblock content %}
